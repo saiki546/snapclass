@@ -3,10 +3,10 @@ from components.header import header_home
 
 from ui.base_layout import style_base_layout,style_background_home,style_background_dashboard
 def home_screen():
-    
+    style_base_layout()
     header_home()
 
-    style_base_layout()
+    
     style_background_home()
     col1,col2=st.columns(2)
 
