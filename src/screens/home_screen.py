@@ -11,10 +11,18 @@ def home_screen():
     col1,col2=st.columns(2)
 
     with col1:
-        if st.button("teacher portal"):
-            st.session_state['login_type'] = 'teacher'
-            st.rerun()
-    with col2:
-        if st.button("student portal"):
+        st.header("I'm Student")
+        st.image("https://i.ibb.co/844D9Lrt/mascot-student.png",width=145)
+        if st.button("student portal",type="primary",icon=':material/arrow_outward:',icon_position='right'):
             st.session_state['login_type'] = 'student'
+            st.rerun()
+
+
+        
+    with col2:
+        st.header("I'm Teacher")
+        st.image("https://i.ibb.co/CsmQQV6X/mascot-prof.png",width=145)
+        st.markdown("<div style='height:25px;'></div>", unsafe_allow_html=True)
+        if st.button("teacher portal",type="primary",icon=':material/arrow_outward:',icon_position='right'):
+            st.session_state['login_type'] = 'teacher'
             st.rerun()
