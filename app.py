@@ -5,7 +5,12 @@ from src.screens.teacher_screen import teacher_screen
 from src.components.dialog_auto_enroll  import auto_enroll_dialog
 
 def main():
-
+    st.markdown(
+        """
+        <meta name="color-scheme" content="only light">
+        """,
+        unsafe_allow_html=True
+    )
     st.set_page_config(
         page_title='SnapClass-Making Attendance Faster Using AI',
         page_icon='https://i.ibb.co/YTYGn5qV/logo.png'
