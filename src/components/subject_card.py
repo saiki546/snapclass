@@ -13,7 +13,7 @@ def subject_card(name,code,section,stats=None,footer_callback=None):
         """
 
         for icon,label,value in stats:
-            html+=f'<div style="background:#EB459E10;padding:5px 12px;border-radius:12px;font-size:0.9rem">{icon}<b>{value}</b>{label}</div>'
+            html+=f'<div style="background:#EB459E10;color:#1e293b;padding:5px 12px;border-radius:12px;font-size:0.9rem">{icon}<b style="color:#1e293b;">{value}</b><span style="color:#64748b;">{label}</span></div>'
 
         html+="</div>"
 
