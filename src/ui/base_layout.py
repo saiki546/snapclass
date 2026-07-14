@@ -69,14 +69,35 @@ def _button_css():
             fill: {_WHITE} !important;
         }}
 
+        .stButton > button:disabled {{
+            opacity: 0.75 !important;
+            cursor: not-allowed !important;
+        }}
+
         .stButton > button:disabled,
         .stButton > button:disabled * {{
             color: {_WHITE} !important;
             -webkit-text-fill-color: {_WHITE} !important;
-            opacity: 0.55 !important;
         }}
 
-        .stButton > button:hover {{
+        .stButton > button:disabled * {{
+            opacity: 1 !important;
+            background-color: transparent !important;
+        }}
+
+        .stButton > button:disabled[kind="tertiary"] {{
+            background-color: {_BLACK} !important;
+        }}
+
+        .stButton > button:disabled[kind="secondary"] {{
+            background-color: {_ACCENT} !important;
+        }}
+
+        .stButton > button:disabled:not([kind="secondary"]):not([kind="tertiary"]) {{
+            background-color: {_PRIMARY} !important;
+        }}
+
+        .stButton > button:hover:not(:disabled) {{
             transform: scale(1.05);
         }}
     """
@@ -157,6 +178,22 @@ def _theme_lock_css():
         .stApp[data-theme="dark"] .stButton > button svg * {{
             color: {_WHITE} !important;
             fill: {_WHITE} !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button:disabled {{
+            opacity: 0.75 !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button:disabled[kind="tertiary"] {{
+            background-color: {_BLACK} !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button:disabled[kind="secondary"] {{
+            background-color: {_ACCENT} !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button:disabled:not([kind="secondary"]):not([kind="tertiary"]) {{
+            background-color: {_PRIMARY} !important;
         }}
 
         .stApp[data-theme="dark"] [data-testid="stDialog"] {{
@@ -275,7 +312,21 @@ def style_base_layout():
                 background-color: transparent !important;
             }}
 
-            button:hover {{
+            button:disabled {{
+                opacity: 0.75 !important;
+            }}
+
+            button:disabled[kind="tertiary"] {{
+                background-color: {_BLACK} !important;
+                color: {_WHITE} !important;
+            }}
+
+            button:disabled[kind="secondary"] {{
+                background-color: {_ACCENT} !important;
+                color: {_WHITE} !important;
+            }}
+
+            button:hover:not(:disabled) {{
                 transform: scale(1.05);
             }}
 
