@@ -1,0 +1,10 @@
+# Strategy A: default theme locked to the app's original light palette.
+# Users may still toggle theme in Streamlit settings; CSS in base_layout.py
+# ensures both light and dark use the same brand colors.
+
+[theme]
+base = "light"
+primaryColor = "#5865F2"
+backgroundColor = "#E0E3FF"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1e293b"
