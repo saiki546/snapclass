@@ -10,6 +10,78 @@ _BLACK = "black"
 _TEXT_DARK = "#1e293b"
 
 
+def _button_css():
+    """Force label and icon colors inside all Streamlit buttons."""
+    return f"""
+        .stButton > button,
+        .stButton > button * {{
+            color: {_WHITE} !important;
+            -webkit-text-fill-color: {_WHITE} !important;
+        }}
+
+        .stButton > button * {{
+            background-color: transparent !important;
+        }}
+
+        .stButton > button {{
+            border-radius: 1.5rem !important;
+            background-color: {_PRIMARY} !important;
+            color: {_WHITE} !important;
+            padding: 10px 20px !important;
+            border: none !important;
+            transition: transform 0.25s ease-in-out;
+        }}
+
+        .stButton > button[kind="secondary"] {{
+            border-radius: 1.5rem !important;
+            background-color: {_ACCENT} !important;
+            color: {_WHITE} !important;
+            padding: 10px 20px !important;
+            border: none !important;
+            transition: transform 0.25s ease-in-out;
+        }}
+
+        .stButton > button[kind="secondary"] * {{
+            color: {_WHITE} !important;
+            -webkit-text-fill-color: {_WHITE} !important;
+            background-color: transparent !important;
+        }}
+
+        .stButton > button[kind="tertiary"] {{
+            border-radius: 1.5rem !important;
+            background-color: {_BLACK} !important;
+            color: {_WHITE} !important;
+            padding: 10px 20px !important;
+            border: none !important;
+            transition: transform 0.25s ease-in-out;
+        }}
+
+        .stButton > button[kind="tertiary"] * {{
+            color: {_WHITE} !important;
+            -webkit-text-fill-color: {_WHITE} !important;
+            background-color: transparent !important;
+        }}
+
+        .stButton > button [data-testid="stIconMaterial"],
+        .stButton > button svg,
+        .stButton > button svg * {{
+            color: {_WHITE} !important;
+            fill: {_WHITE} !important;
+        }}
+
+        .stButton > button:disabled,
+        .stButton > button:disabled * {{
+            color: {_WHITE} !important;
+            -webkit-text-fill-color: {_WHITE} !important;
+            opacity: 0.55 !important;
+        }}
+
+        .stButton > button:hover {{
+            transform: scale(1.05);
+        }}
+    """
+
+
 def _theme_lock_css():
     """Strategy A + B + C: force the original palette in light and dark mode."""
     return f"""
@@ -47,19 +119,44 @@ def _theme_lock_css():
             border-color: {_BLACK} !important;
         }}
 
+        .stApp[data-theme="dark"] .stButton > button,
+        .stApp[data-theme="dark"] .stButton > button *,
+        .stApp[data-theme="dark"] .stButton > button[kind="secondary"],
+        .stApp[data-theme="dark"] .stButton > button[kind="secondary"] *,
+        .stApp[data-theme="dark"] .stButton > button[kind="tertiary"],
+        .stApp[data-theme="dark"] .stButton > button[kind="tertiary"] * {{
+            color: {_WHITE} !important;
+            -webkit-text-fill-color: {_WHITE} !important;
+        }}
+
         .stApp[data-theme="dark"] .stButton > button {{
             background-color: {_PRIMARY} !important;
-            color: {_WHITE} !important;
         }}
 
         .stApp[data-theme="dark"] .stButton > button[kind="secondary"] {{
             background-color: {_ACCENT} !important;
-            color: {_WHITE} !important;
         }}
 
         .stApp[data-theme="dark"] .stButton > button[kind="tertiary"] {{
             background-color: {_BLACK} !important;
             color: {_WHITE} !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button * {{
+            background-color: transparent !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button[kind="tertiary"] * {{
+            color: {_WHITE} !important;
+            -webkit-text-fill-color: {_WHITE} !important;
+            background-color: transparent !important;
+        }}
+
+        .stApp[data-theme="dark"] .stButton > button [data-testid="stIconMaterial"],
+        .stApp[data-theme="dark"] .stButton > button svg,
+        .stApp[data-theme="dark"] .stButton > button svg * {{
+            color: {_WHITE} !important;
+            fill: {_WHITE} !important;
         }}
 
         .stApp[data-theme="dark"] [data-testid="stDialog"] {{
@@ -151,9 +248,9 @@ def style_base_layout():
                 color: {_TEXT_DARK} !important;
             }}
 
-            /* Strategy C: strengthened selectors for native widgets */
-            button,
-            .stButton > button {{
+            {_button_css()}
+
+            button {{
                 border-radius: 1.5rem !important;
                 background-color: {_PRIMARY} !important;
                 color: {_WHITE} !important;
@@ -162,28 +259,23 @@ def style_base_layout():
                 transition: transform 0.25s ease-in-out;
             }}
 
-            button[kind="secondary"],
-            .stButton > button[kind="secondary"] {{
-                border-radius: 1.5rem !important;
+            button[kind="secondary"] {{
                 background-color: {_ACCENT} !important;
                 color: {_WHITE} !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out;
             }}
 
-            button[kind="tertiary"],
-            .stButton > button[kind="tertiary"] {{
-                border-radius: 1.5rem !important;
+            button[kind="tertiary"] {{
                 background-color: {_BLACK} !important;
                 color: {_WHITE} !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out;
             }}
 
-            button:hover,
-            .stButton > button:hover {{
+            button[kind="tertiary"] * {{
+                color: {_WHITE} !important;
+                -webkit-text-fill-color: {_WHITE} !important;
+                background-color: transparent !important;
+            }}
+
+            button:hover {{
                 transform: scale(1.05);
             }}
 
